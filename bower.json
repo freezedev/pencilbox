@@ -1,0 +1,30 @@
+{
+  "name": "pencilbox",
+  "version": "0.0.1",
+  "homepage": "https://github.com/freezedev/pencilbox",
+  "authors": [
+    "Johannes Stein <johannesstein@freeze-dev.com>"
+  ],
+  "description": "Graphics engine for the web",
+  "main": "dist/pencilbox.js",
+  "keywords": [
+    "canvas",
+    "dom",
+    "webgl",
+    "graphics",
+    "graphics",
+    "engine"
+  ],
+  "license": "UNLICENSE",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animframe": "~1.1.1",
+    "udefine": "~0.7.8"
+  }
+}
