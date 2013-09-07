@@ -1,0 +1,11 @@
+{
+  "name": "pencilbox",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-coffeelint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-coffee": "*",
+    "matchdep": "*"
+  }
+}
