@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "animframe": "~1.1.1",
-    "udefine": "~0.7.8"
+    "udefine": "~0.7.8",
+    "eventmap": "~1.2.1"
   }
 }
