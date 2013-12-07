@@ -1,8 +1,12 @@
 udefine 'pencilbox/interface/methods', ->
-  methods = [
-    'drawTexture'
-    'drawRect'
+  methods = [   
     'drawCircle'
+    'drawEllipse'
+    'drawImage'
+    'drawImageRect'
     'drawLine'
+    'drawOval'
     'drawPoint'
+    'drawRect'
+    'drawText'
   ]
