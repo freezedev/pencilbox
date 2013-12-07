@@ -1,5 +1,5 @@
 udefine 'pencilbox/interface/methods', ->
-  methods = [   
+  methods = [
     'drawCircle'
     'drawEllipse'
     'drawImage'
