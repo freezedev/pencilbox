@@ -1,2 +1,2 @@
-udefine 'pencilbox/provider/dom', ->
+udefine ->
   
