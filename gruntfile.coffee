@@ -31,4 +31,4 @@ module.exports = (grunt) ->
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
   
   grunt.registerTask 'test', 'Lints and unit tests', ['coffeelint']
-  grunt.registerTask 'default', 'Default task', ['coffee', 'test', 'uglify']
+  grunt.registerTask 'default', 'Default task', ['clean', 'amd_tamer', 'coffee', 'test', 'uglify']
