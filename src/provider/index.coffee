@@ -1,6 +1,7 @@
-udefine 'pencilbox/provider', ->
+udefine ->
   Provider = {}
   
   Provider.defaultProvider = 'CanvasProvider'
   
   Provider
+  
