@@ -1,4 +1,4 @@
-udefine 'pencilbox/provider/canvas', ->
+udefine ->
   class CanvasProvider
     constructor: (elementId = "canvas-#{Date.now()}", options) ->
       {parent, width, height} = options if options?
