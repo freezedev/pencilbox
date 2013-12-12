@@ -2,10 +2,12 @@
   "name": "pencilbox",
   "version": "0.0.1",
   "devDependencies": {
-    "grunt": "0.4.x",
+    "grunt": "~0.4.2",
     "grunt-coffeelint": "*",
     "grunt-contrib-uglify": "*",
     "grunt-contrib-coffee": "*",
-    "matchdep": "*"
+    "matchdep": "*",
+    "grunt-amd-tamer": "~0.1.7",
+    "grunt-contrib-clean": "~0.5.0"
   }
 }
