@@ -10,7 +10,7 @@ module.exports = (grunt) ->
       combine:
         options:
           base: 'src/'
-          namespace: pkg.name
+          namespace: '<%= pkg.name %>'
         files:
           'dist/<%= pkg.name %>.coffee': 'src/**/*.coffee'
     coffeelint:
