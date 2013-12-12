@@ -4,6 +4,15 @@ module.exports = (grunt) ->
   
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
+    clean:
+      dist: ['dist']
+    amd_tamer:
+      combine:
+        options:
+          base: 'src/'
+          namespace: pkg.name
+        files:
+          'dist/<%= pkg.name %>.coffee': 'src/**/*.coffee'
     coffeelint:
       source: ['src/**/*.coffee']
     coffee:
@@ -22,4 +31,4 @@ module.exports = (grunt) ->
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks)
   
   grunt.registerTask 'test', 'Lints and unit tests', ['coffeelint']
-  grunt.registerTask 'default', 'Default task', ['test', 'coffee', 'uglify']
+  grunt.registerTask 'default', 'Default task', ['coffee', 'test', 'uglify']
