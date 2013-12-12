@@ -4,20 +4,20 @@
 }).call(this);
 
 (function() {
-
+  udefine(function() {});
 
 }).call(this);
 
 (function() {
-  udefine('pencilbox/interface/methods', function() {
+  udefine(function() {
     var methods;
-    return methods = ['drawTexture', 'drawRect', 'drawCircle', 'drawLine', 'drawPoint'];
+    return methods = ['drawCircle', 'drawEllipse', 'drawImage', 'drawImageRect', 'drawLine', 'drawOval', 'drawPoint', 'drawRect', 'drawText'];
   });
 
 }).call(this);
 
 (function() {
-  udefine('pencilbox/provider/canvas', function() {
+  udefine(function() {
     var CanvasProvider;
     return CanvasProvider = (function() {
       function CanvasProvider(elementId, options) {
@@ -52,6 +52,21 @@
       return CanvasProvider;
 
     })();
+  });
+
+}).call(this);
+
+(function() {
+  udefine(function() {});
+
+}).call(this);
+
+(function() {
+  udefine(function() {
+    var Provider;
+    Provider = {};
+    Provider.defaultProvider = 'CanvasProvider';
+    return Provider;
   });
 
 }).call(this);
