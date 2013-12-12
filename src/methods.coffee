@@ -1,4 +1,4 @@
-udefine 'pencilbox/interface/methods', ->
+udefine ->
   methods = [
     'drawCircle'
     'drawEllipse'
