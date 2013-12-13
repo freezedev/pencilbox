@@ -1,6 +1,6 @@
 udefine ->
   class CanvasProvider
-    constructor: (elementId = "canvas-#{Date.now()}", options) ->
+    constructor: (elementId = "pencilbox-#{Date.now()}", options) ->
       {parent, width, height} = options if options?
       
       unless document.getElementById elementId
