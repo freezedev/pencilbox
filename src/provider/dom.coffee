@@ -33,7 +33,9 @@ udefine ->
       height = pixelize height
       
       unless document.getElementById elementId
-        createElement parent, {id: elementId, className: 'pencilbox'}, {width, height}
+        createElement parent,
+          {id: elementId, className: 'pencilbox'},
+          {width, height}
         
       elem = document.getElementById elementId
       
@@ -47,4 +49,6 @@ udefine ->
         width: pixelize w
         height: pixelize h
         
-      createElement @root, {id: "pb-element-#{element}", className: 'element rect'}, styles
+      createElement @root,
+        {id: "pb-element-#{element}", className: 'element rect'},
+        styles
