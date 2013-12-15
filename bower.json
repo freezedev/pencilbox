@@ -27,5 +27,8 @@
     "animframe": "~1.1.1",
     "udefine": "~0.7.8",
     "eventmap": "~1.2.1"
+  },
+  "resolutions": {
+    "udefine": "~0.8.2"
   }
 }
