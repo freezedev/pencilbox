@@ -1,4 +1,4 @@
-udefine ->
+udefine ['pencilbox/constants'], (Constants) ->
   elements = 0
   
   pixelize = (num) ->
@@ -29,6 +29,10 @@ udefine ->
         elementId = "pencilbox-#{Date.now()}"
       
       {parent, width, height} = options if options?
+      
+      width = width or Constants.defaultWidth
+      height = height or Constants.defaultHeight
+      
       width = pixelize width
       height = pixelize height
       
