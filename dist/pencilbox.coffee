@@ -1,3 +1,6 @@
+udefine 'pencilbox/constants', ->
+  defaultWidth: 800
+  defaultHeight: 480
 udefine 'pencilbox', ->
 
 udefine 'pencilbox/methods', ->
@@ -34,7 +37,7 @@ udefine 'pencilbox/provider/canvas', ->
       @context = elem.getContext '2d'
       
     drawRect: (x, y, w, h) ->
-udefine 'pencilbox/provider/dom', ->
+udefine 'pencilbox/provider/dom', ['pencilbox/constants'], (Constants) ->
   elements = 0
   
   pixelize = (num) ->
@@ -65,6 +68,10 @@ udefine 'pencilbox/provider/dom', ->
         elementId = "pencilbox-#{Date.now()}"
       
       {parent, width, height} = options if options?
+      
+      width = width or Constants.defaultWidth
+      height = height or Constants.defaultHeight
+      
       width = pixelize width
       height = pixelize height
       
@@ -84,7 +91,9 @@ udefine 'pencilbox/provider/dom', ->
         top: pixelize y
         width: pixelize w
         height: pixelize h
-        
+      
+      element = "rect-#{Date.now()}"
+      
       createElement @root,
         {id: "pb-element-#{element}", className: 'element rect'},
         styles

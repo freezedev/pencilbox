@@ -4,6 +4,13 @@
 }).call(this);
 
 (function() {
+  udefine('pencilbox/constants', function() {
+    return {
+      defaultWidth: 800,
+      defaultHeight: 480
+    };
+  });
+
   udefine('pencilbox', function() {});
 
   udefine('pencilbox/methods', function() {
@@ -48,7 +55,7 @@
     })();
   });
 
-  udefine('pencilbox/provider/dom', function() {
+  udefine('pencilbox/provider/dom', ['pencilbox/constants'], function(Constants) {
     var DOMProvider, createElement, elements, pixelize;
     elements = 0;
     pixelize = function(num) {
@@ -90,6 +97,8 @@
         if (options != null) {
           parent = options.parent, width = options.width, height = options.height;
         }
+        width = width || Constants.defaultWidth;
+        height = height || Constants.defaultHeight;
         width = pixelize(width);
         height = pixelize(height);
         if (!document.getElementById(elementId)) {
@@ -106,7 +115,7 @@
       }
 
       DOMProvider.prototype.drawRect = function(x, y, w, h) {
-        var styles;
+        var element, styles;
         styles = {
           position: 'absolute',
           left: pixelize(x),
@@ -114,6 +123,7 @@
           width: pixelize(w),
           height: pixelize(h)
         };
+        element = "rect-" + (Date.now());
         return createElement(this.root, {
           id: "pb-element-" + element,
           className: 'element rect'
