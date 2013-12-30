@@ -48,7 +48,9 @@ udefine ->
         top: pixelize y
         width: pixelize w
         height: pixelize h
-        
+      
+      element = "rect-#{Date.now()}"
+      
       createElement @root,
         {id: "pb-element-#{element}", className: 'element rect'},
         styles
