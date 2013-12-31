@@ -44,6 +44,21 @@ udefine ['pencilbox/constants'], (Constants) ->
       elem = document.getElementById elementId
       
       @root = elementId
+    
+    drawCircle: (x, y, size) ->
+      styles =
+        position: 'absolute'
+        left: pixelize x
+        top: pixelize y
+        width: pixelize size
+        height: pixelize size
+        border-radius: pixelize (size / 2)
+        
+      element = "circle-#{Date.now()}"
+      
+      createElement @root,
+        {id: "pb-element-#{element}", className: 'element circle'},
+        styles
       
     drawRect: (x, y, w, h) ->
       styles =
