@@ -7,4 +7,4 @@ udefine ['mixedice', 'eventmap', 'pencilbox/core/property'], (mixedice, EventMap
       property @, 'top', top
       @type = 'none'
       
-      @trigger 'created'
+      @trigger 'created', @type
