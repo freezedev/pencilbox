@@ -1,6 +1,50 @@
 udefine 'pencilbox/constants', ->
   defaultWidth: 800
   defaultHeight: 480
+udefine 'pencilbox/core/property', ->
+  property = (context, name, reference) ->
+    Object.defineProperty context, name,
+      get: -> reference
+      set: (value) ->
+        if value isnt reference
+          context.trigger? 'property:change', name, value
+          reference = value
+
+udefine 'pencilbox/element/all', ['pencilbox/element', './circle', './rect'], (Element, Circle, Rect) ->
+  {Element, Circle, Rect}
+  
+udefine 'pencilbox/element/circle', ['pencilbox/element', 'pencilbox/core/property'], (Element, property) ->
+  class CircleElement extends Element
+    constructor: (left = 0, top = 0, width = 100, height = 100) ->
+      @type = 'circle'
+      
+      property @, 'width', width
+      property @, 'height', height
+      
+      super left, top
+udefine 'pencilbox/element', ['mixedice', 'eventmap', 'pencilbox/core/property'], (mixedice, EventMap, property) ->
+  class Element
+    constructor: (left = 0, top = 0) ->
+      mixedice [@, Element::], new EventMap()
+      
+      property @, 'left', left
+      property @, 'top', top
+      @type = 'none'
+      
+      @on 'created', @onCreate
+      @trigger 'created', @type, @
+    
+    # TODO: This needs to be better to take multiple providers into account
+    @onCreate = ->
+udefine 'pencilbox/element/rect', ['pencilbox/element', 'pencilbox/core/property'], (Element, property) ->
+  class RectElement extends Element
+    constructor: (left = 0, top = 0, width = 100, height = 100) ->
+      @type = 'rect'
+      
+      property @, 'width', width
+      property @, 'height', height
+      
+      super left, top
 udefine 'pencilbox', ->
 
 udefine 'pencilbox/methods', ->
@@ -37,7 +81,7 @@ udefine 'pencilbox/provider/canvas', ->
       @context = elem.getContext '2d'
       
     drawRect: (x, y, w, h) ->
-udefine 'pencilbox/provider/dom', ['pencilbox/constants'], (Constants) ->
+udefine 'pencilbox/provider/dom', ['pencilbox/constants', 'pencilbox/element/all'], (Constants, Elements) ->
   elements = 0
   
   pixelize = (num) ->
@@ -81,23 +125,36 @@ udefine 'pencilbox/provider/dom', ['pencilbox/constants'], (Constants) ->
           {width, height}
         
       elem = document.getElementById elementId
-      
+            
       @root = elementId
       
-    drawRect: (x, y, w, h) ->
-      styles =
-        position: 'absolute'
-        left: pixelize x
-        top: pixelize y
-        width: pixelize w
-        height: pixelize h
-      
-      element = "rect-#{Date.now()}"
-      
-      createElement @root,
-        {id: "pb-element-#{element}", className: 'element rect'},
+      Elements.Element.onCreate = (type, instance) =>
+        element = "#{type}-#{Date.now()}"
+        styles =
+          position: 'absolute'
+        
+        styles['left'] = pixelize instance.left
+        styles['top'] = pixelize instance.top
+        
+        switch type
+          when 'circle'
+            size = if instance.width > instance.height then instance.width else instance.height
+          
+            styles['width'] = styles['height'] = pixelize size
+            styles['border-radius'] = pixelize (size / 2)
+          when 'rect'
+            styles['width'] = pixelize instance.width
+            styles['height'] = pixelize instance.height
+            
+        createElement @root,
+        {id: "pb-element-#{element}", className: "element #{type}"},
         styles
-
+    
+    drawCircle: (x, y, size) ->
+      new Elements.Circle x, y, size, size
+      
+    drawRect: (x, y, w, h) ->
+      new Elements.Rect x, y, w, h
 udefine 'pencilbox/provider', ->
   Provider = {}
   
