@@ -52,7 +52,7 @@ udefine ['pencilbox/constants'], (Constants) ->
         top: pixelize y
         width: pixelize size
         height: pixelize size
-        border-radius: pixelize (size / 2)
+        'border-radius': pixelize (size / 2)
         
       element = "circle-#{Date.now()}"
       
