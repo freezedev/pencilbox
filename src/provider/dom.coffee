@@ -1,4 +1,4 @@
-udefine ['pencilbox/constants'], (Constants) ->
+udefine ['pencilbox/constants', 'pencilbox/element/all'], (Constants, Elements) ->
   elements = 0
   
   pixelize = (num) ->
