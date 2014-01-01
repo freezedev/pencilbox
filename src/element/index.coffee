@@ -11,4 +11,4 @@ udefine ['mixedice', 'eventmap', 'pencilbox/core/property'], (mixedice, EventMap
       @trigger 'created', @type, @
     
     # TODO: This needs to be better to take multiple providers into account
-    @onCreate ->
+    @onCreate = ->
