@@ -42,34 +42,33 @@ udefine ['pencilbox/constants', 'pencilbox/element/all'], (Constants, Elements) 
           {width, height}
         
       elem = document.getElementById elementId
-      
+            
       @root = elementId
+      
+      Elements.Element.onCreate = (type, instance) =>
+        element = "#{type}-#{Date.now()}"
+        styles =
+          position: 'absolute'
+        
+        styles['left'] = pixelize instance.left
+        styles['top'] = pixelize instance.top
+        
+        switch type
+          when 'circle'
+            size = if instance.width > instance.height then instance.width else instance.height
+          
+            styles['width'] = styles['height'] = pixelize size
+            styles['border-radius'] = pixelize (size / 2)
+          when 'rect'
+            styles['width'] = pixelize instance.width
+            styles['height'] = pixelize instance.height
+            
+        createElement @root,
+        {id: "pb-element-#{element}", className: "element #{type}"},
+        styles
     
     drawCircle: (x, y, size) ->
-      styles =
-        position: 'absolute'
-        left: pixelize x
-        top: pixelize y
-        width: pixelize size
-        height: pixelize size
-        'border-radius': pixelize (size / 2)
-        
-      element = "circle-#{Date.now()}"
-      
-      createElement @root,
-        {id: "pb-element-#{element}", className: 'element circle'},
-        styles
+      new Elements.Circle x, y, size, size
       
     drawRect: (x, y, w, h) ->
-      styles =
-        position: 'absolute'
-        left: pixelize x
-        top: pixelize y
-        width: pixelize w
-        height: pixelize h
-      
-      element = "rect-#{Date.now()}"
-      
-      createElement @root,
-        {id: "pb-element-#{element}", className: 'element rect'},
-        styles
+      new Elements.Rect x, y, w, h
