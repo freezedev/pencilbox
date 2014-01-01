@@ -14,6 +14,7 @@ module.exports = (grunt) ->
         files:
           'dist/<%= pkg.name %>.coffee': 'src/**/*.coffee'
     coffeelint:
+      options: grunt.file.readJSON 'coffeelint.json'
       source: ['src/**/*.coffee']
     coffee:
       compile:
