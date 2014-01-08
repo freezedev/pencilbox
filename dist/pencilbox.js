@@ -70,6 +70,36 @@
     })(Element);
   });
 
+  udefine('pencilbox/element/image', ['pencilbox/element'], function(Element) {
+    var ImageElement, _ref;
+    return ImageElement = (function(_super) {
+      __extends(ImageElement, _super);
+
+      function ImageElement() {
+        _ref = ImageElement.__super__.constructor.apply(this, arguments);
+        return _ref;
+      }
+
+      return ImageElement;
+
+    })(Element);
+  });
+
+  udefine('pencilbox/element/imagerect', ['pencilbox/element'], function(Element) {
+    var ImageRectElement, _ref;
+    return ImageRectElement = (function(_super) {
+      __extends(ImageRectElement, _super);
+
+      function ImageRectElement() {
+        _ref = ImageRectElement.__super__.constructor.apply(this, arguments);
+        return _ref;
+      }
+
+      return ImageRectElement;
+
+    })(Element);
+  });
+
   udefine('pencilbox/element', ['mixedice', 'eventmap', 'pencilbox/core/property'], function(mixedice, EventMap, property) {
     var Element;
     return Element = (function() {

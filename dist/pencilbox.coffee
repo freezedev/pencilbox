@@ -22,6 +22,10 @@ udefine 'pencilbox/element/circle', ['pencilbox/element', 'pencilbox/core/proper
       property @, 'height', height
       
       super left, top
+udefine 'pencilbox/element/image', ['pencilbox/element'], (Element) ->
+  class ImageElement extends Element
+udefine 'pencilbox/element/imagerect', ['pencilbox/element'], (Element) ->
+  class ImageRectElement extends Element
 udefine 'pencilbox/element', ['mixedice', 'eventmap', 'pencilbox/core/property'], (mixedice, EventMap, property) ->
   class Element
     constructor: (left = 0, top = 0) ->
